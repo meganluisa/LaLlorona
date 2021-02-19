@@ -7,3 +7,8 @@ class FoodForm(forms.ModelForm):
         fields = [
             'title', 'description', 'price', 'image_url'
         ]
+
+class RawFoodForm(forms.Form):
+    title = forms.CharField()
+    description = forms.CharField()
+    price = forms.DecimalField()
