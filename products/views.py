@@ -4,6 +4,13 @@ from .forms import FoodForm, RawFoodForm
 
 def food_create_view(request):
     my_form = RawFoodForm()
+    if request.method =="POST":
+        my_form = RawFoodForm(request.POST)
+        if my_form.is_valid():
+            print(my_form.cleaned_data)
+            Food.objects.create(**my_form.cleaned_data)
+        else:
+            print(my_form.errors)
     context = {
         "form": my_form
     }
